@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center my-2">
+  <h3>Admin</h3>
+</div>
+
+<div class="container">
+  <ul class="list-group">
+    <a class="nav-link" href="./authors/">
+      <li class="nav-item list-group-item d-flex justify-content-between align-items-center mb-1">
+        Authors
+        <span class="badge text-dark bg-info-subtle" style="font-size: xx-small;">{{ authors_count }}</span>
+      </li>
+    </a>
+    <a class="nav-link mb-1" href="./books/">
+      <li class="nav-item list-group-item d-flex justify-content-between align-items-center mb-1">
+        Books
+        <span class="badge text-dark bg-info-subtle" style="font-size: xx-small;">{{ books_count }}</span>
+      </li>
+    </a>
+  </ul>
+
+</div>
+{% endblock %}
