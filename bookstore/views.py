@@ -20,8 +20,8 @@ def admin(request):
 
 def view_authors(request):
     context = {}
-    authors = Author.objects.all()
-    paginator = Paginator(authors, 10)
+    authors = Author.objects.all().order_by('name')
+    paginator = Paginator(authors, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context['page_obj'] = page_obj
@@ -76,8 +76,8 @@ def edit_author(request, author_id):
 
 def view_books(request):
     context = {}
-    books = Book.objects.all()
-    paginator = Paginator(books, 10)
+    books = Book.objects.all().order_by('title')
+    paginator = Paginator(books, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context['page_obj'] = page_obj
