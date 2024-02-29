@@ -24,7 +24,7 @@ class Book(models.Model):
     genres = models.CharField(max_length=200, null=True, blank=True)
     isbn = models.CharField(max_length=13, validators=[validate_isbn], null=True, blank=True)
     added_date = models.DateField(auto_now_add=True)
-    publisher = models.TextField(max_length=100)
+    publisher = models.TextField(max_length=100, null=True, blank=True)
     published_date = models.DateField()
     languages = models.CharField(max_length=200, null=True, blank=True)
     plot = models.TextField(null=True, blank=True)
