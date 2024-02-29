@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Author, Book
 from .forms import AuthorForm, BookForm
 from django.core.paginator import Paginator
+from django.urls import reverse
 
 
 def index(request):
@@ -77,7 +78,7 @@ def edit_author(request, author_id):
 def view_books(request):
     context = {}
     books = Book.objects.all().order_by('title')
-    paginator = Paginator(books, 5)
+    paginator = Paginator(books, 2)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context['page_obj'] = page_obj
@@ -88,7 +89,7 @@ def view_books(request):
             book = Book.objects.get(id=pk)
             book.delete()
             # Redirect to the same page after deletion
-            return redirect('view_books' + ('?page=' + page_number if page_number else ''))
+            return redirect(reverse('view_books') + ('?page=' + page_number if page_number else ''))
 
     return render(request, 'view_books.html', context)
 
